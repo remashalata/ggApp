@@ -1,0 +1,44 @@
+.place-card {
+    background-color: var(--ion-color-light);
+    min-height: 89vh;
+}
+
+form input {
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #677690;
+}
+
+form ion-textarea {
+    width: 100%;
+    padding: 0px 12px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #677690;
+}
+
+form ion-select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid #677690;
+}
+
+form div {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mb {
+    margin-bottom: 10px;
+}
+
+.image-div {
+    position: relative;
+    text-align: center;
+    color: white;
+}

@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Home
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="userRole == 'user'" routerLink="/request-events">
+        <ion-icon slot="icon-only" name="alarm"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="userRole == 'admin'" routerLink="/admin-events">
+        <ion-icon slot="icon-only" name="alarm"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/notifications">
+        <ion-icon slot="icon-only" name="chatbubble-ellipses"></ion-icon>
+        <ion-badge color="danger" *ngIf="notificationList.length > 0" >{{notificationList.length}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div>
+      <input type="text" class="my-search-box" (keydown.enter)="$event.preventDefault()" placeholder="Search Location"
+        type="text" #search />
+    </div>
+
+    <google-map #myGoogleMap height="92vh" width="100%" [zoom]="zoom" [center]="center" [options]="options"
+      (mapClick)="eventHandler($event,'mapClick')" (mapDblclick)="eventHandler($event,'mapDblclick')"
+      (mapDrag)="eventHandler($event,'mapDrag')" (mapDragend)="eventHandler($event,'mapDragend')"
+      (mapRightclick)="eventHandler($event,'mapRightclick')"
+      (positionChanged)="eventHandler($event,'marker_positionChanged')"
+      (zoomChanged)="eventHandler($event,'zoomChanged')">
+
+      <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
+        [label]="marker.label" [title]="marker.title" [options]="marker.options" (mapClick)="openInfoWindow(marker.eventId)"
+        (mapDrag)="eventHandler($event,'mapDragMarker')" (mapDragend)="eventHandler($event,'mapDragend')">
+      </map-marker>
+    </google-map>
+</ion-content>

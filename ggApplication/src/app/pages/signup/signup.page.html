@@ -1,0 +1,77 @@
+<ion-content>
+  <div class="sign">
+    <h1>Sign Up</h1>
+    <h5> hello! sign up to get started</h5>
+  </div>
+  <form [formGroup]="signupForm" (ngSubmit)="handleForm()" novalidate>
+    <div class="mb"
+      *ngIf="isSubmitted && hasError">
+      <span style="color: red;">{{message}}</span>
+    </div>
+    <div class="firstname mb">
+      <ion-icon name="person"></ion-icon>
+      <input type="text" placeholder="Firstname" formControlName="firstname" class="custom" required />
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['firstname'].errors && signupForm.controls['firstname'].errors['required']">
+      <span style="color: red;">Firstname is required.</span>
+    </div>
+    <div class="lastname mb">
+      <ion-icon name="person"></ion-icon>
+      <input type="text" placeholder="Lastname" formControlName="lastname" class="custom" required>
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['lastname'].errors && signupForm.controls['lastname'].errors['required']">
+      <span style="color: red;">Lastname is required.</span>
+    </div>
+    <div class="email mb">
+      <ion-icon name="mail"></ion-icon>
+      <input type="email" placeholder="Email" formControlName="email" class="custom" required>
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['email'].errors && signupForm.controls['email'].errors['email']">
+      <span style="color: red;">Invalid Email.</span>
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['email'].errors && signupForm.controls['email'].errors['required']">
+      <span style="color: red;">Email is required.</span>
+    </div>
+    <div class="location mb">
+      <input type="text" placeholder="Search Location" class="my-search-box" formControlName="location" class="custom" #search required />
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['location'].errors && signupForm.controls['location'].errors['required']">
+      <span style="color: red;">Location is required.</span>
+    </div>
+    <div class="pass mb">
+      <ion-icon name="key"></ion-icon>
+      <input type="password" placeholder="password" formControlName="password" class="custom" required>
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signupForm.controls['password'].errors && signupForm.controls['password'].errors['required']">
+      <span style="color: red;">Password is required.</span>
+    </div>
+    <div style="margin-top: 20px;width: 100%;">
+      <ion-button shape="round" type="submit"> Sign Up </ion-button>
+    </div>
+    <div style="margin-top: 10px; width: 100%;">
+      <ion-button fill="outline" shape="round" [routerLink]="['/signin']">Sign In</ion-button>
+    </div>
+  </form>
+  <div class="or">
+    <h4>
+      <ion-icon name="remove-outline"></ion-icon>OR<ion-icon name="remove-outline"></ion-icon>
+    </h4>
+  </div>
+  <div class="icons">
+    <ion-button>
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="logo-instagram"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="logo-google"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "ggApplication",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}

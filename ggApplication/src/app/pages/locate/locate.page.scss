@@ -1,0 +1,41 @@
+ion-slides{
+    height: 100%;
+}
+ion-slide{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.76);
+}
+ion-slide h1{
+    color: rgba(30, 27, 27, 0.732);
+}
+ion-slide h6{
+    padding: 0 0 30px 0;
+    font-size: large;
+    font-style: oblique;
+    font-weight: 600;
+    color:rgb(20, 20, 20);
+}
+ion-button{
+    --background:transparent;
+    --color: rgb(229, 42, 42);
+    font-size: large;
+    
+    
+}
+
+.swiper-slide img {
+    height: 300px;
+}
+
+.swiper-pagination-bullet {
+    background: #54545a!important;
+}
+
+.swiper-pagination-bullet {
+    width: 12px!important;
+    height: 12px!important;
+    opacity: 0.5!important;
+}

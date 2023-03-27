@@ -1,0 +1,52 @@
+<ion-content>
+  <div class="sign">
+    <h1>Sign In</h1>
+    <h5> Don't have an account? <a href="signup">Sign up </a></h5>
+  </div>
+  <form [formGroup]="signinForm" (ngSubmit)="handleForm()" novalidate>
+    <div class="mb"
+      *ngIf="isSubmitted && hasError">
+      <span style="color: red;">{{message}}</span>
+    </div>
+    <div class="email mb">
+      <ion-icon name="person"></ion-icon>
+      <input type="email" placeholder="Email" class="custom" formControlName="email" required />
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signinForm.controls['email'].errors && signinForm.controls['email'].errors['email']">
+      <span style="color: red;">Invalid Email.</span>
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signinForm.controls['email'].errors && signinForm.controls['email'].errors['required']">
+      <span style="color: red;">Email is required.</span>
+    </div>
+    <div class="pass mb">
+      <ion-icon name="key"></ion-icon>
+      <input type="password" formControlName="password" placeholder="password" class="custom">
+    </div>
+    <div class="mb"
+      *ngIf="isSubmitted && signinForm.controls['password'].errors && signinForm.controls['password'].errors['required']">
+      <span style="color: red;">Password is required.</span>
+    </div>
+    <div style="margin-top: 20px;width: 100%;">
+      <ion-button shape="round" type="submit"> Sign IN </ion-button>
+    </div>
+  </form>
+  <div class="or">
+    <h4>
+      <ion-icon name="remove-outline"></ion-icon>OR<ion-icon name="remove-outline"></ion-icon>
+    </h4>
+  </div>
+  <div class="icons">
+    <ion-button>
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="logo-instagram"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon name="logo-google"></ion-icon>
+    </ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,20 @@
+.active {
+    color: var(--ion-color-primary);
+    ion-icon {
+      color: var(--ion-color-secondary);
+      }
+  }
+  
+  .iconGlobe {
+      color: var(--ion-color-success);
+  }
+  
+  ion-toggle {
+      color: var(--ion-color-secondary) !important;
+  }
+  
+  .icon {
+      vertical-align: middle;
+      color: var(--ion-color-tertiary);
+  }
+  

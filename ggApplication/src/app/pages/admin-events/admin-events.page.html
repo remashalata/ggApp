@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Request Events
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngFor="let requestL of requestList; let i = index">
+    <ion-item button (click)="handleStatus(requestL._id)">
+      <ion-label>
+        {{ requestL.eventId?.name }}
+      </ion-label>
+      <ion-icon *ngIf="requestL.status" name="checkmark" slot="end" color="secondary"></ion-icon>
+      <ion-icon *ngIf="!requestL.status" name="close" slot="end" color="danger"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

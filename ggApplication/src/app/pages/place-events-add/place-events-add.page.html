@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Place Event Add
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="12" size-sm="8" size-ms="8" size-xl="6" offset-sm="2" class="ion-no-padding">
+        <ion-card class="place-card">
+          <div class="image-div">
+            <img class="mat-card-image" src="assets/imgs/about.jpg" alt="Place" />
+          </div>
+          <ion-card-content class="ion-text-wrap">
+            <form [formGroup]="placeForm" (ngSubmit)="handleForm()" novalidate>
+              <div class="mb" *ngIf="isSubmitted && hasError">
+                <span style="color: red;">{{message}}</span>
+              </div>
+              <div class="name mb">
+                <input type="text" placeholder="Place Name" formControlName="name" class="custom" required />
+              </div>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['name'].errors && placeForm.controls['name'].errors['required']">
+                <span style="color: red;">Place Name is required.</span>
+              </div>
+              <div class="description mb">
+                <ion-textarea placeholder="Type something here" type="text" formControlName="description" autoGrow="true" required="true"></ion-textarea>
+              </div>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['description'].errors && placeForm.controls['description'].errors['required']">
+                <span style="color: red;">Description is required.</span>
+              </div>
+              <div class="type mb">
+                <ion-select formControlName="type" placeholder="Select Sport Type..." (ionChange)="typeChange($event)">
+                  <ion-select-option value="walking">Walking</ion-select-option>
+                  <ion-select-option value="running">Running</ion-select-option>
+                  <ion-select-option value="trainning">Trainning</ion-select-option>
+                </ion-select>
+              </div>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['name'].errors && placeForm.controls['name'].errors['required']">
+                <span style="color: red;">Type is required.</span>
+              </div>
+              <ion-item class="mb" id="start-modal">
+                <ion-label style="font-size: 14px;">Start Date</ion-label>
+                <ion-note style="font-size: 14px;" slot="end">{{startDate | date: 'yyyy-MM-dd hh:mm a'}}</ion-note>
+              </ion-item>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['startDate'].errors && placeForm.controls['startDate'].errors['required']">
+                <span style="color: red;">Start Date is required.</span>
+              </div>
+              <ion-modal trigger="start-modal" [cssClass]="'bottom-end'">
+                <ng-template>
+                  <ion-datetime
+                    (ionChange)="handleStartDateChange($event)"
+                    formControlName="startDate"
+                    size="cover"
+                    [showDefaultButtons]="true"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-modal>
+              <ion-item class="mb" id="end-modal">
+                <ion-label style="font-size: 14px;">End Date</ion-label>
+                <ion-note style="font-size: 14px;" slot="end">{{endDate | date: 'yyyy-MM-dd hh:mm a'}}</ion-note>
+              </ion-item>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['endDate'].errors && placeForm.controls['endDate'].errors['required']">
+                <span style="color: red;">End Date is required.</span>
+              </div>
+              <ion-modal trigger="end-modal" [cssClass]="'bottom-end'">
+                <ng-template>
+                  <ion-datetime
+                    (ionChange)="handleEndDateChange($event)"
+                    formControlName="endDate"
+                    size="cover"
+                    [showDefaultButtons]="true"
+                  ></ion-datetime>
+                </ng-template>
+              </ion-modal>
+              <div class="location mb">
+                <input type="text" placeholder="Search Location" class="my-search-box" formControlName="location" class="custom" #search required />
+              </div>
+              <div class="mb"
+                *ngIf="isSubmitted && placeForm.controls['location'].errors && placeForm.controls['location'].errors['required']">
+                <span style="color: red;">Location is required.</span>
+              </div>
+              <div style="margin-top: 20px;">
+                <ion-button shape="round" type="submit" style="width: 100%;"> Save </ion-button>
+              </div>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

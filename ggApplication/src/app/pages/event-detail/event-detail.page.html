@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">
+      Event Detail
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col
+				size="12"
+				size-sm="8"
+				size-ms="8"
+				size-xl="6"
+				offset-sm="2"
+				class="ion-no-padding"
+			>
+    </ion-col>
+    <ion-card class="event-card">
+      <div class="image-div">
+        <img
+          class="mat-card-image"
+          src="assets/imgs/about.jpg"
+          alt="Event"
+        />
+      </div>
+      <ion-card-content class="ion-text-wrap">
+        <p class="event-name">
+          {{ name }}
+        </p>
+        <p>
+          <span>Latitude : </span>
+          <span>{{ latitude }}</span>
+        </p>
+        <p>
+          <span>Logitude : </span>
+          <span>{{ longitude }}</span>
+        </p>
+        <p>
+          <span>Sports Type : </span>
+          <span>{{ type }}</span>
+        </p>
+        <p>
+          <span>Location : </span>
+          <span>{{ location }}</span>
+        </p>
+        <p>
+          <span>Start Date : </span>
+          <span>{{ startDate | date: 'yyyy-MM-dd hh:mm a' }}</span>
+        </p>
+        <p>
+          <span>End Date : </span>
+          <span>{{ endDate | date: 'yyyy-MM-dd hh:mm a' }}</span>
+        </p>
+        <p>Description : </p>
+        <p>{{ description }}</p>
+        <div style="margin-top: 20px;" *ngIf="userRole !== 'admin' && show">
+          <ion-button shape="round" type="button" (click)="joinRequest()" style="width: 100%;"> Join </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    </ion-row>
+  </ion-grid>
+</ion-content>
